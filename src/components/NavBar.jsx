@@ -6,6 +6,11 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
           <a className="navbar-brand" href="#">
+          <img
+              src='img/logoCat.png'
+              height='30'
+              alt=''
+            />
             CataCommerce
           </a>
           <button
