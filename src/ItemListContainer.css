@@ -1,0 +1,12 @@
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tomato;
+    width: auto;
+    min-height: 100vh;
+}
+
+.saludo{
+    color: seashell;
+}

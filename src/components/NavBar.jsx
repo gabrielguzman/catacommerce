@@ -1,11 +1,12 @@
 import React from "react";
+import CartWidget from "./CartWidget";
 
 const Navbar = () => {
   return (
     <div className="container-fluid navbar-dark bg-dark">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/#">
           <img
               src='img/logoCat.png'
               height='30'
@@ -26,25 +27,26 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse " id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <a className="nav-link active" aria-current="page" href="/#">
                   Inicio
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/#">
                   Ofertas
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/#">
                   Mis Compras
                 </a>
               </li>
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
-                  href="#"
+                  href="/#"
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -54,17 +56,17 @@ const Navbar = () => {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/#">
                       Tecnología
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/#">
                       Electrodomesticos
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/#">
                       Moda
                     </a>
                   </li>
@@ -72,12 +74,17 @@ const Navbar = () => {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/#">
                       Ver Más
                     </a>
                   </li>
                 </ul>
               </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/#">
+                    <CartWidget />
+                  </a>
+                </li>
             </ul>
           </div>
         </div>
