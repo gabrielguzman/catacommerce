@@ -6,8 +6,10 @@ export default function ItemListContainer({greeting}) {
   return (
     <div className="box">
          <ItemCount stock={5} initial={1} addOn= {(stock,contador)=>{
-            if (stock > 0) {
+            if (stock > 0 && contador > 0) {
                 alert(`Se han agregado: ${contador} productos`);
+            }else if(contador === 0){
+                alert('La cantidad de productos a agregar debe ser mayor 0');
             }else{
               alert('No hay productos en stock.');
             }
