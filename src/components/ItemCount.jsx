@@ -12,10 +12,10 @@ export default function ItemCount({ stock, initial, addOn }) {
   };
 
   const restar = () => {
-    if (contador > 0) {
+    if (contador > 1) {
       setContador(contador - 1);
     } else {
-      alert("No hay cantidad agregada de este producto.");
+      alert("La cantidad de este producto debe ser mayor a 0.");
     }
   };
 
