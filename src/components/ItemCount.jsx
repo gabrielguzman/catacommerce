@@ -4,9 +4,7 @@ export default function ItemCount({ stock, initial, addOn }) {
   const [contador, setContador] = useState(initial);
 
   const sumar = () => {
-    if (contador === stock) {
-      alert("Superó el stock de este producto.");
-    } else {
+    if (contador < stock) {
       setContador(contador + 1);
     }
   };
@@ -14,8 +12,6 @@ export default function ItemCount({ stock, initial, addOn }) {
   const restar = () => {
     if (contador > 0) {
       setContador(contador - 1);
-    } else {
-      alert("La cantidad de este producto debe ser mayor a 0.");
     }
   };
 
@@ -23,16 +19,19 @@ export default function ItemCount({ stock, initial, addOn }) {
     <>
       <div className="col-lg-3">
         <div className="card-body">
-          <p p className="text-white h4">Stock = {stock} </p>
-          <p className="text-white h3">Cantidad = {contador}</p>
+          <p p className="h4">Stock = {stock} </p>
+          <p className="h3">Cantidad = {contador}</p>
           <div class="btn-group" role="group" aria-label="Basic example">
             <button className="btn btn-md btn-primary" onClick={restar}>-</button>
             <button className="btn btn-md btn-primary" onClick={sumar}>+</button>
           </div>
           <p>
-            <button className="btn btn-md btn-danger mt-2" onClick={() => addOn(stock, contador)}>
-              Agregar
-            </button>
+          <button
+              disabled={stock === 0 || contador === 0}
+              className="btn btn-md btn-danger mt-2"
+              onClick={() => addOn(contador)}
+            >Agregar
+          </button>
           </p>
         </div>
       </div>

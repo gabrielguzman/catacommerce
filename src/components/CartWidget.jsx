@@ -6,7 +6,7 @@ export default function CartWidget() {
   return (
     <>
        <FontAwesomeIcon icon={faCartShopping} className="text-white"/>
-       <span class="badge badge-light">4</span>
+       <span className="badge badge-light">4</span>
     </>
   );
 }
