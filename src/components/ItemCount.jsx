@@ -19,9 +19,9 @@ export default function ItemCount({ stock, initial, addOn }) {
     <>
       <div className="col-lg-3">
         <div className="card-body">
-          <p p className="h4">Stock = {stock} </p>
+          <p className="h4">Stock = {stock} </p>
           <p className="h3">Cantidad = {contador}</p>
-          <div class="btn-group" role="group" aria-label="Basic example">
+          <div className="btn-group" role="group" aria-label="Basic example">
             <button className="btn btn-md btn-primary" onClick={restar}>-</button>
             <button className="btn btn-md btn-primary" onClick={sumar}>+</button>
           </div>
