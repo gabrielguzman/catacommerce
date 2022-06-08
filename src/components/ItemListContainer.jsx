@@ -19,7 +19,7 @@ export default function ItemListContainer({greeting}) {
 
     getProd
     .then((result)=>{
-      setResultado(result);
+      setResultado(result); //[result[0]]
     })
     .catch((error) => {
       setError(true);
@@ -29,6 +29,7 @@ export default function ItemListContainer({greeting}) {
     })
   }, [])
 
+  console.log(resultado);
   return (
     <>
       <div className="box container">

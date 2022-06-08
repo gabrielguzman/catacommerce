@@ -1,4 +1,4 @@
-export const products = () => (
+export const products =
 [
     {
       "id": 1,
@@ -49,4 +49,3 @@ export const products = () => (
       "imagen": "img/08.jpg"
     },
 ]
-)
