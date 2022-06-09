@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
 import ItemDetail from './ItemDetail'
 //import { products } from '../data/products'
-import GetITem from './GetITem';
+import GetITem from './getItem';
 
 
 export default function ItemDetailContainer() {
