@@ -1,7 +1,6 @@
 import ItemDetail from './ItemDetail'
 import GetITem from './getItem';
 
-
 export default function ItemDetailContainer() {
     let resultado = GetITem();
     
