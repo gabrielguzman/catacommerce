@@ -11,7 +11,7 @@ export default function ItemDetail({product}) {
                 </div>
                 <div className="col-lg-6 mt-3"> 
                     <div><h4>Nombre: {product.nombre}</h4></div>
-                    <div><h4>Colores: {product.colores}</h4></div>
+                    <div><h4>Categoria: {product.categoria}</h4></div>
                     <div><h4>Precio: {product.precio}</h4></div>
                 </div>
             </div>
