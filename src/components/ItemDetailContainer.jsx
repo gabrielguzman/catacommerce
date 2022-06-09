@@ -3,6 +3,7 @@ import GetITem from './getItem';
 
 export default function ItemDetailContainer() {
     let resultado = GetITem();
+    console.log(resultado);
     
     return (
     <div>
