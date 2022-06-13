@@ -4,3 +4,7 @@
 .contenido{
     min-height: calc(100vh - 27vh); 
 }
+
+body{
+    background-color: black;
+}
