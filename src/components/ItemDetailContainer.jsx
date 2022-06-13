@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import ItemDetail from './ItemDetail'
-import GetITem from './getItem';
+import { useEffect, useState } from 'react';
+import ItemDetail from './ItemDetail';
+/* import GetITem from './getItem'; */
 import { useParams } from 'react-router-dom';
 import GetProducts from './getProducts';
 
 
-export default function ItemDetailContainer() {
+export default function ItemDetailContainer({setCantidad}) {
   const [resultado,setResultado] = useState([]);  
   const {id} = useParams();
 
@@ -20,7 +20,7 @@ export default function ItemDetailContainer() {
     
     return (
     <div>
-        { (resultado[0] !== undefined ) ? <ItemDetail product = {resultado[0]}/> : <h3>El producto no existe...</h3>}
+        { (resultado[0] !== undefined ) ? <ItemDetail product = {resultado[0]} setCantidad = {setCantidad}/> : <h3>El producto no existe...</h3>}
     </div>
   )
 }

@@ -17,7 +17,6 @@ export default function ItemCount({ stock, initial, addOn }) {
 
   return (
     <>
-      <div className="col-lg-3">
         <div className="card-body">
           <p className="h4">Stock = {stock} </p>
           <p className="h3">Cantidad = {contador}</p>
@@ -30,11 +29,10 @@ export default function ItemCount({ stock, initial, addOn }) {
               disabled={stock === 0 || contador === 0}
               className="btn btn-md btn-danger mt-2"
               onClick={() => addOn(contador)}
-            >Agregar
+            >Comprar Ahora
           </button>
           </p>
         </div>
-      </div>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import getProducts from './getProducts';
-import ItemCount from './ItemCount'
+// import ItemCount from './ItemCount'
 import ItemList from './ItemList'
 
 export default function ItemListContainer({greeting}) {
@@ -23,9 +23,9 @@ export default function ItemListContainer({greeting}) {
         <div className="row">
              <h4 className='mt-3'>{greeting}</h4>
              {resultado !== undefined ? <ItemList productos = {resultado}  /> : <ItemList productos = {productos}  />}
-             <ItemCount stock={5} initial={1} addOn={(contador) =>{
+             {/* <ItemCount stock={5} initial={1} addOn={(contador) =>{
                 alert(`Se han agregado: ${contador} productos`);
-             }}/>
+             }}/> */} {/*LO PASO A ITEM DETAIL*/}
         </div>
       </div>
     </>

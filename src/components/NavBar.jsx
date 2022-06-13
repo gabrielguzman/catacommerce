@@ -2,7 +2,7 @@ import React from "react";
 import CartWidget from "./CartWidget";
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({cantidad}) => {
   return (
     <div className="container-fluid navbar-dark bg-dark">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -36,16 +36,12 @@ const Navbar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/#">
-                  Ofertas
-                </a>
-                <Link to={`/`}>VER
+                <Link className="nav-link" to={`/`}>Ofertas
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/#">
-                  Mis Compras
-                </a>
+                <Link className="nav-link" to={`/`}>Mis Compras
+                </Link>
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -60,33 +56,29 @@ const Navbar = () => {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a className="dropdown-item" href="/#">
-                      Tecnología
-                    </a>
+                    <Link className="dropdown-item" to={`/category/audio`}>Audio
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/#">
-                      Electrodomesticos
-                    </a>
+                    <Link className="dropdown-item" to={`/category/computacion`}>Computación
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/#">
-                      Moda
-                    </a>
+                    <Link className="dropdown-item" to={`/category/instrumentos_musicales`}>Instrumentos Musicales
+                    </Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/#">
-                      Ver Más
-                    </a>
+                    <Link className="dropdown-item" to={`/`}>Ver más
+                    </Link>
                   </li>
                 </ul>
               </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/#">
-                    <CartWidget />
+                    <CartWidget cantidad = {cantidad}/>
                   </a>
                 </li>
             </ul>
