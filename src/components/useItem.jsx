@@ -12,6 +12,7 @@ export default function useItem(itemId) {
       return new Promise((res, rej) => {
         setTimeout(() => {
           const itemFounded = products.find((product) => product.id === itemId);
+
           res(itemFounded);
         }, 2000);
       });
