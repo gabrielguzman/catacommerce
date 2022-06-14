@@ -1,13 +1,13 @@
-import ItemDetail from './ItemDetail'
-import GetITem from './getItem';
+import ItemDetail from "./ItemDetail";
+import useItem from "./useItem";
 
 export default function ItemDetailContainer() {
-    let resultado = GetITem();
-    console.log(resultado);
-    
-    return (
+  const itemId = 1;
+  const { isLoading, item } = useItem(itemId);
+
+  return (
     <div>
-        { (resultado.id ?? null ) ? <ItemDetail product = {resultado}/> : <h3>CARGANDO...</h3>}
+      {isLoading ? <h3>CARGANDO...</h3> : <ItemDetail product={item} />}
     </div>
-  )
+  );
 }
