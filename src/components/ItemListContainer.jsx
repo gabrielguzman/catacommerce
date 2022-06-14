@@ -1,11 +1,12 @@
 import { type } from '@testing-library/user-event/dist/type';
 import React from 'react'
-import getProducts from './getProducts';
 import ItemCount from './ItemCount'
 import ItemList from './ItemList'
+import useProducts from './useProducts'
 
 export default function ItemListContainer({greeting}) {
-  let productos = getProducts();
+
+  const { isLoading, productos } = useProducts();
 
   return (
     <>
