@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { products } from "../data/products";
 
-export default function useItem(itemId) {
+export default function useItem(id) {
   const [item, setItem] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -11,10 +11,9 @@ export default function useItem(itemId) {
     const getProduct = () => {
       return new Promise((res, rej) => {
         setTimeout(() => {
-          const itemFounded = products.find((product) => product.id === itemId);
-
+          const itemFounded = products.find((product) => product.id == id);
           res(itemFounded);
-        }, 2000);
+        },1000);
       });
     };
 
@@ -26,7 +25,7 @@ export default function useItem(itemId) {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [itemId]);
+  }, [id]);
 
   return { isLoading, item };
 }

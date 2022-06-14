@@ -17,7 +17,6 @@ export default function ItemCount({ stock, initial, addOn }) {
 
   return (
     <>
-      <div className="col-lg-3">
         <div className="card-body">
           <p className="h4">Stock = {stock} </p>
           <p className="h3">Cantidad = {contador}</p>
@@ -34,7 +33,6 @@ export default function ItemCount({ stock, initial, addOn }) {
           </button>
           </p>
         </div>
-      </div>
     </>
   );
 }
