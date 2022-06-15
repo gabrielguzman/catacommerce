@@ -12,7 +12,7 @@ export default function useProducts(id) {
       return new Promise((res, rej) => {
         setTimeout(() => {
           if (id) {
-            const itemsFounded = products.filter((item) => item.categoria.localeCompare(id,undefined,{sensitivity:'base'})===0);
+            const itemsFounded = products.filter((item) => item.categoria.localeCompare(id,undefined,{sensitivity:'base'})===0); /* Utilice esto para que me tome la categoria ya sea si esta Escrito en mayuscula o minusculas, creo que fue lo mas optimo. Podria haberlo hecho directamente con item.categoria === id */
             res(itemsFounded);
           }else{
             res(products);
