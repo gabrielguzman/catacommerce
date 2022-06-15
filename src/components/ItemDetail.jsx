@@ -1,7 +1,17 @@
 import React from 'react'
-import ItemCount from './ItemCount'
+import { useState } from 'react';
+import ItemCount from './ItemCount';
+import { Link } from 'react-router-dom';
 
-export default function ItemDetail({product, setCantidad}) {
+export default function ItemDetail({product}) {
+    const [unidades, setUnidades] = useState(0); //unidades que guardare en mi carrito
+    
+    function addOn(quantityToAdd) {
+        let cantidad = quantityToAdd;
+        alert(`Se han agregado: ${cantidad} productos`);
+        setUnidades(cantidad); //seteo la cantidad para la funcion addOn que luego me servira para condicionar el boton de Agregar, y permitirá que aparezca el boton("Terminar mi compra") con link a /cart  
+    }    
+
     return (
         <>
             <div className="container bg-light pb-3 box-1 mt-5">
@@ -23,12 +33,9 @@ export default function ItemDetail({product, setCantidad}) {
                             {product.descripcion}
                         </div>
                         <div className='text-center alert alert-info'>
-                            <ItemCount stock={5} initial={1} addOn={(contador) =>{
-                                alert(`Se han agregado: ${contador} productos`);
-                                setCantidad(contador);
-                            }}
-                            />
+                            {unidades > 0 ? <Link to={'/cart'} className="btn btn-primary">Terminar mi compra</Link>:<ItemCount stock={product.stock} initial={1} addOn={addOn}/>} 
                         </div>
+                        {/* LLamo a ItemCount y le envio props como solicita la diapositiva*/}                       
                     </div>
                 </div>
             </div>
