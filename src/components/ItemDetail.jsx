@@ -4,7 +4,7 @@ import ItemCount from './ItemCount';
 import { Link } from 'react-router-dom';
 
 export default function ItemDetail({product}) {
-    const [unidades, setUnidades] = useState(0); //unidades que guardare en mi carrito
+    const [unidades, setUnidades] = useState(0); //unidades de mi producto que guardare en mi carrito
     
     function addOn(quantityToAdd) {
         let cantidad = quantityToAdd;
