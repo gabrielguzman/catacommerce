@@ -10,12 +10,14 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import ItemListContainer from './components/ItemListContainer';
 import Navbar from "./components/NavBar";
 import NotFound from "./components/NotFound";
-
+import CartContext from "./context/CartContext";
 
 function App() {
   return (
+    
     <div className="App">
       <BrowserRouter>
+      <CartContext>
       <Navbar/>
       <div className="contenido">
         <Routes>
@@ -27,6 +29,7 @@ function App() {
         </Routes>
       </div>
       <Footer />
+      </CartContext>
       </BrowserRouter>
     </div>
   );

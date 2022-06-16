@@ -1,16 +1,28 @@
-import React from 'react'
-import { useState } from 'react';
-import ItemCount from './ItemCount';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { MiContexto } from '../context/CartContext';
+import ItemCount from './ItemCount';
 
 export default function ItemDetail({product}) {
+    
+    const {nombre, precio, descripcion} = product;
+
     const [unidades, setUnidades] = useState(0); //unidades que guardare en mi carrito
+
+    let {setProduct, addItem} = useContext(MiContexto);
     
     function addOn(quantityToAdd) {
         let cantidad = quantityToAdd;
         alert(`Se han agregado: ${cantidad} productos`);
-        setUnidades(cantidad); //seteo la cantidad para la funcion addOn que luego me servira para condicionar el boton de Agregar, y permitirá que aparezca el boton("Terminar mi compra") con link a /cart  
+        setUnidades(cantidad);
+        setProduct(product);
+        //seteo la cantidad para la funcion addOn que luego me servira para condicionar el boton de Agregar, y permitirá que aparezca el boton("Terminar mi compra") con link a /cart 
     }    
+
+    function comprar(){
+        addItem({unidades,nombre, precio ,descripcion})
+    }
+    
 
     return (
         <>
@@ -33,7 +45,7 @@ export default function ItemDetail({product}) {
                             {product.descripcion}
                         </div>
                         <div className='text-center alert alert-info'>
-                            {unidades > 0 ? <Link to={'/cart'} className="btn btn-primary">Terminar mi compra</Link>:<ItemCount stock={product.stock} initial={1} addOn={addOn}/>} 
+                            {unidades > 0 ? <button className="btn btn-primary" onClick={comprar}>Terminar mi compra</button >:<ItemCount stock={product.stock} initial={1} addOn={addOn}/>} 
                         </div>
                         {/* LLamo a ItemCount y le envio props como solicita la diapositiva*/}                       
                     </div>
