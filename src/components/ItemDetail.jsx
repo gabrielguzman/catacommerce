@@ -1,28 +1,26 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { MiContexto } from '../context/CartContext';
+import { CartContext } from '../context/CartContext';
 import ItemCount from './ItemCount';
 
 export default function ItemDetail({product}) {
-    
-    const {nombre, precio, descripcion} = product;
+    // const {id, nombre, precio, descripcion} = product;
+    const [quantity, setQuantity] = useState(); //unidades que guardare en mi carrito
 
-    const [unidades, setUnidades] = useState(0); //unidades que guardare en mi carrito
-
-    let {setProduct, addItem} = useContext(MiContexto);
+    let {addItem, isInCart} = useContext(CartContext);
     
-    function addOn(quantityToAdd) {
-        let cantidad = quantityToAdd;
-        alert(`Se han agregado: ${cantidad} productos`);
-        setUnidades(cantidad);
-        setProduct(product);
-        //seteo la cantidad para la funcion addOn que luego me servira para condicionar el boton de Agregar, y permitirá que aparezca el boton("Terminar mi compra") con link a /cart 
+    function addOn(contador){
+        alert(`Se han agregado: ${contador} productos`);
+        console.log(contador);
+        setQuantity(contador);
+        console.log(quantity);
+        addItem(product, quantity);
+        isInCart(product.id)
     }    
 
     function comprar(){
-        addItem({unidades,nombre, precio ,descripcion})
+        setQuantity(10);
+        alert(quantity);
     }
-    
 
     return (
         <>
@@ -40,12 +38,13 @@ export default function ItemDetail({product}) {
                             <h4 className='text-start'>Categoria: {product.categoria}</h4>
                             <h4 className='text-start'>Precio: ${product.precio}</h4>
                         </div> 
-                        <div class="alert alert-info" role="alert">
+                        <div className="alert alert-info" role="alert">
                             <h3>Descripción del producto</h3>
                             {product.descripcion}
                         </div>
-                        <div className='text-center alert alert-info'>
-                            {unidades > 0 ? <button className="btn btn-primary" onClick={comprar}>Terminar mi compra</button >:<ItemCount stock={product.stock} initial={1} addOn={addOn}/>} 
+                        <div>
+                            
+                        <ItemCount stock={product.stock} initial={1} addOn={addOn}/> 
                         </div>
                         {/* LLamo a ItemCount y le envio props como solicita la diapositiva*/}                       
                     </div>
