@@ -7,9 +7,8 @@ export default function ItemDetail({product}) {
     const [unidades, setUnidades] = useState(0); //unidades de mi producto que guardare en mi carrito
     
     function addOn(quantityToAdd) {
-        let cantidad = quantityToAdd;
-        alert(`Se han agregado: ${cantidad} productos`);
-        setUnidades(cantidad); //seteo la cantidad para la funcion addOn que luego me servira para condicionar el boton de Agregar, y permitirá que aparezca el boton("Terminar mi compra") con link a /cart  
+        alert(`Se han agregado: ${quantityToAdd} productos`);
+        setUnidades(quantityToAdd); //seteo la cantidad para la funcion addOn que luego me servira para condicionar el boton de Agregar, y permitirá que aparezca el boton("Terminar mi compra") con link a /cart  
     }    
 
     return (
