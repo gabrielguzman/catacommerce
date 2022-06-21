@@ -21,7 +21,6 @@ const MyProvider = ({children}) =>{
             copiaCarrito[productIndex].quantity += quantity;
             setCart(copiaCarrito);
         }
-        getItemPrice();
     }
 
     const isInCart = (id) => {
@@ -45,7 +44,6 @@ const MyProvider = ({children}) =>{
     const getItemPrice = () => {
         return cart.reduce((acumulator,item) => acumulator += item.quantity * item.precio,0);
     }
-
    
     return (
         <Provider value={{ cart, clearCart, removeItem, getItemPrice, addItem, isInCart, getItemQuantity}}>

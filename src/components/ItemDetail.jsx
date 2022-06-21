@@ -8,7 +8,7 @@ import { useContext } from 'react';
 export default function ItemDetail({product}) {
     const [unidades, setUnidades] = useState(0); //unidades de mi producto que guardare en mi carrito
     
-    let {addItem, cart} = useContext(CartContext);
+    let {addItem} = useContext(CartContext);
 
     function addOn(quantityToAdd) {
         //alert(`Se han agregado: ${quantityToAdd} productos`);
@@ -43,9 +43,6 @@ export default function ItemDetail({product}) {
                                 onClick={()=>addItem(product,unidades)}>Comprar</Link>
                             </div>
                             :<ItemCount stock={product.stock} initial={1} addOn={addOn}/>} 
-                        </div>
-                        <div>
-                            
                         </div>
                         {/* LLamo a ItemCount y le envio props como solicita la diapositiva*/}                       
                     </div>
