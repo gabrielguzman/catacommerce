@@ -10,12 +10,12 @@ export default function CartWidget() {
   const {getItemQuantity} = useContext(CartContext);
 
   return (
-    <>
-       <Link to={'/cart'}>
+       <Link to={'/cart'} className="nav-link">
+           
           <FontAwesomeIcon icon={faCartShopping} className="text-white"/>
           <span className="badge badge-light">{getItemQuantity() > 0 && getItemQuantity()}</span>
+          
        </Link>
-    </>
   );
 }
 

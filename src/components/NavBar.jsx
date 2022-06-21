@@ -76,9 +76,7 @@ const Navbar = ({cantidad}) => {
                 </ul>
               </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/#">
                     <CartWidget cantidad = {cantidad}/>
-                  </a>
                 </li>
             </ul>
           </div>

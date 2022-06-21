@@ -8,10 +8,10 @@ import { useContext } from 'react';
 export default function ItemDetail({product}) {
     const [unidades, setUnidades] = useState(0); //unidades de mi producto que guardare en mi carrito
     
-    let {addItem} = useContext(CartContext);
+    let {addItem, cart} = useContext(CartContext);
 
     function addOn(quantityToAdd) {
-        alert(`Se han agregado: ${quantityToAdd} productos`);
+        //alert(`Se han agregado: ${quantityToAdd} productos`);
         setUnidades(quantityToAdd);
     }
     
@@ -36,8 +36,16 @@ export default function ItemDetail({product}) {
                             {product.descripcion}
                         </div>
                         <div className='text-center alert alert-info'>
-                            {unidades > 0 ? <div> <Link to={'/cart'} className="btn btn-danger" 
-                            onClick={()=>addItem(product,unidades)}>Terminar mi compra</Link></div>:<ItemCount stock={product.stock} initial={1} addOn={addOn}/>} 
+                            {unidades > 0 ? 
+                            <div>
+                                <p className='fw-bolder'>*Esta por comprar: Producto: {product.nombre} - Unidades: {unidades}</p>
+                                <Link to={'/cart'} className="btn btn-danger" 
+                                onClick={()=>addItem(product,unidades)}>Comprar</Link>
+                            </div>
+                            :<ItemCount stock={product.stock} initial={1} addOn={addOn}/>} 
+                        </div>
+                        <div>
+                            
                         </div>
                         {/* LLamo a ItemCount y le envio props como solicita la diapositiva*/}                       
                     </div>
