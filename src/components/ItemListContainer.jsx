@@ -10,12 +10,13 @@ export default function ItemListContainer({greeting}) {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-
   // const db = getFirestore();
   // const coleccion = 'productos';
+
   const {db, coleccion} = useConnection();
   const itemsCollection = collection(db, coleccion);
 
+  //traer todos los productos si no hay categoria, caso contrario filtrarlo.
   useEffect(() => {
     if (id) {
       const q = query(collection(db,coleccion), where("categoria","==", id));

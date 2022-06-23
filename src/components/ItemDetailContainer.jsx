@@ -14,6 +14,7 @@ export default function ItemDetailContainer() {
   const {db, coleccion} = useConnection();
   //const idDocumento = 'fUxqjxavSSqrHcxeMk1w'
   
+  // Traer un producto especifico
   useEffect(() => {
     const productRef = doc(db, coleccion, id);
     getDoc(productRef).then((res)=>{
