@@ -42,6 +42,12 @@ export default function Checkout() {
       clearCart();
     });
   }
+/*    const setChange = (e)=>{
+    setFormulario({
+        [...formulario],
+        [e.target.name] : e.target.value
+    })
+   } */
 
   const renderForm = () => {
     return (
@@ -88,12 +94,13 @@ export default function Checkout() {
             <h5 className="mt-3">Detalle Pedido</h5>
             <ul className="list-group">
               {cart?.map((item, key) => (
-                <div className="">
+                <div className="" key={item.id}>
                   <li className="list-group-item">
                     {item.nombre} - ${item.precio} - Cantidad: {item.quantity}
                   </li>
                 </div>
               ))}
+              <li className="list-group-item bg-danger text-white fw-bolder">Total: ${getItemPrice()}</li>
             </ul>
           </div>
         </div>
