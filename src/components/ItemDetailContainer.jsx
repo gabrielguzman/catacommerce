@@ -27,10 +27,9 @@ export default function ItemDetailContainer() {
     })
   }, [id])
 
-
   return (
     <div>
-      {isLoading ? <h3>CARGANDO...</h3> : <ItemDetail product={item} />}
+      {isLoading ? <h5>CARGANDO...</h5> : <ItemDetail product={item} />}
     </div>
   );
 }

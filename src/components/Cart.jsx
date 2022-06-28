@@ -12,7 +12,7 @@ export default function Cart() {
       return (
         <div className='container'> 
           <h4 className='mt-3'>Carrito</h4>
-          <table className='table table-striped table-hover mt-3'>
+          <table className='table table-striped table-hover mt-5'>
                 <thead>
                   <tr>
                     <th scope="col" >
@@ -58,14 +58,17 @@ export default function Cart() {
               <tr style={{borderWidth: "0"}}>
                 <td colSpan={3}></td>
                 <td className='table-danger fw-bolder '>Total: ${getItemPrice()}</td>
-                <td></td>
+                
+              </tr>
+              <tr>
+              <td colSpan={4}></td>
+              <td><button className='btn btn-sm btn-danger mt-3' onClick={()=>clearCart()}>Vaciar Carrito</button></td>
               </tr>
             </tfoot>
             </table>
             <div>
-            <Link to={'/'} className='btn btn-primary mt-3 mr-1'>Seguir Comprando</Link>
-            <Link to={'/checkout'} className='btn btn-primary mt-3 mr-1'>Terminar Compra</Link>
-            <button className='btn btn-danger mt-3' onClick={()=>clearCart()}>Vaciar</button>
+            <Link to={'/'} className='btn btn-secondary mt-3 mr-1'>Seguir Comprando</Link>
+            <Link to={'/checkout'} className='btn btn-danger mt-3 mr-1'>Terminar Compra</Link>
             </div>
         </div> 
       );

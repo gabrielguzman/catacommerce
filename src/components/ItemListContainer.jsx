@@ -37,7 +37,7 @@ export default function ItemListContainer({greeting}) {
       <div className="box container">
         <div className="row">
              <h4 className='mt-3'>{greeting}</h4>
-             {isLoading ? <h4>cargando</h4> : <ItemList items ={items}/>}
+             {isLoading ? <h5>CARGANDO...</h5> : <ItemList items ={items}/>}
         </div>
       </div>
     </>
