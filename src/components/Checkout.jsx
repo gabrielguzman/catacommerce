@@ -1,6 +1,7 @@
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, getFirestore, firebase } from 'firebase/firestore';
 import { useContext, useState } from 'react';
 import { CartContext } from '../context/CartContext';
+
 
 export default function Checkout() {
     const [name, setName] = useState('');
@@ -8,24 +9,31 @@ export default function Checkout() {
     const [cellphone, setCellphone] = useState('');
     const [orderId, setOrderId] = useState('');
     const [estado, setEstado] = useState(false);
- 
+    const [orden, setOrden] = useState({});
+
     const db = getFirestore();
     const orderCollection = collection(db,'orders');
 
-    const {cart, getItemPrice} = useContext(CartContext);
+    const {cart, getItemPrice, clearCart} = useContext(CartContext);
 
     function handleClick() {
+        let fecha = new Date();
+        fecha = fecha.getFullYear()+'-'+fecha.getMonth()+'-'+fecha.getDay()+'-'+fecha.getHours()+':'+fecha.getMinutes()+':'+fecha.getSeconds();
+
         const pedido = {
             buyer: {name, email, cellphone},
             items: cart,
             total: getItemPrice(),
+            date: fecha,
         }
 
-        //enviar pedido
         addDoc(orderCollection, pedido).then(({id})=>{
             setOrderId(id);
             setEstado(true);
+            setOrden(pedido);
+            clearCart();
         });
+
     }
 
     const renderForm = () =>{
@@ -60,10 +68,14 @@ export default function Checkout() {
       )
     }
 
-
+  console.log(orden);
   return (
     <>
-      {estado === true ? <div> <h4>El id de pedido es: {orderId}</h4> </div> : renderForm() }     
+        {estado === true ? 
+            <div className="alert alert-primary" role="alert">
+               Tu id de pedido es: <h4>{orderId}</h4>
+            </div> : renderForm()
+        }     
     </>
   );
 }
