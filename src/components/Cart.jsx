@@ -64,6 +64,7 @@ export default function Cart() {
             </table>
             <div>
             <Link to={'/'} className='btn btn-primary mt-3 mr-1'>Seguir Comprando</Link>
+            <Link to={'/checkout'} className='btn btn-primary mt-3 mr-1'>Terminar Compra</Link>
             <button className='btn btn-danger mt-3' onClick={()=>clearCart()}>Vaciar</button>
             </div>
         </div> 

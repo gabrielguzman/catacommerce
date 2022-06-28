@@ -25,7 +25,7 @@ export default function ItemDetailContainer() {
         console.log('no se encontro el documento');
       }
     })
-  }, [])
+  }, [id])
 
 
   return (
