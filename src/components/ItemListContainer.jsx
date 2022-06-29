@@ -10,9 +10,6 @@ export default function ItemListContainer({greeting}) {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // const db = getFirestore();
-  // const coleccion = 'productos';
-
   const {db, coleccion} = useConnection();
   const itemsCollection = collection(db, coleccion);
 
