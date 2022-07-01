@@ -12,16 +12,21 @@ export default function useProducts(id) {
       return new Promise((res, rej) => {
         setTimeout(() => {
           if (id) {
-            const itemsFounded = products.filter((item) => item.categoria.localeCompare(id,undefined,{sensitivity:'base'})===0); /* Utilice esto para que me tome la categoria ya sea si esta Escrito en mayuscula o minusculas, creo que fue lo mas optimo. Podria haberlo hecho directamente con item.categoria === id */
+            const itemsFounded = products.filter(
+              (item) =>
+                item.categoria.localeCompare(id, undefined, {
+                  sensitivity: "base",
+                }) === 0
+            ); /* Utilice esto para que me tome la categoria ya sea si esta Escrito en mayuscula o minusculas, creo que fue lo mas optimo. Podria haberlo hecho directamente con item.categoria === id */
             res(itemsFounded);
-          }else{
+          } else {
             res(products);
           }
-        },);
+        });
       });
     };
 
-    getProducts() 
+    getProducts()
       .then((result) => {
         setIsLoading(false);
         setItems(result);
@@ -29,7 +34,7 @@ export default function useProducts(id) {
       .finally(() => {
         setIsLoading(false);
       });
-  },[id]);
+  }, [id]);
 
   return { isLoading, items };
 }

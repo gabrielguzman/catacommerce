@@ -17,22 +17,27 @@ export default function ItemCount({ stock, initial, addOn }) {
 
   return (
     <>
-        <div className="card-body">
-          <p className="h4">Stock = {stock} </p>
-          <p className="h3">Cantidad = {contador}</p>
-          <div className="btn-group" role="group" aria-label="Basic example">
-            <button className="btn btn-md btn-primary" onClick={restar}>-</button>
-            <button className="btn btn-md btn-primary" onClick={sumar}>+</button>
-          </div>
-          <p>
-          <button
-              disabled={stock === 0 || contador === 0}
-              className="btn btn-md btn-danger mt-2"
-              onClick={() => addOn(contador)}
-            >Agregar
+      <div className="card-body">
+        <p className="h4">Stock = {stock} </p>
+        <p className="h3">Cantidad = {contador}</p>
+        <div className="btn-group" role="group" aria-label="Basic example">
+          <button className="btn btn-md btn-primary" onClick={restar}>
+            -
           </button>
-          </p>
+          <button className="btn btn-md btn-primary" onClick={sumar}>
+            +
+          </button>
         </div>
+        <p>
+          <button
+            disabled={stock === 0 || contador === 0}
+            className="btn btn-md btn-danger mt-2"
+            onClick={() => addOn(contador)}
+          >
+            Agregar
+          </button>
+        </p>
+      </div>
     </>
   );
 }

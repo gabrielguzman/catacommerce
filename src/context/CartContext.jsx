@@ -4,7 +4,6 @@ export const CartContext = createContext({});
 
 const {Provider} = CartContext;
 
-
 const MyProvider = ({children}) =>{
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('productos')) ?? []);
 
@@ -41,12 +40,10 @@ const MyProvider = ({children}) =>{
         return cart.reduce((acumulator,item) => acumulator += item.quantity, 0);
     }
     
-    //revisar
     const removeItem = (id) =>{
         return setCart(cart.filter(item => item.id !== id));
     }
     
-    //revisar
     const getItemPrice = () => {
         return cart.reduce((acumulator,item) => acumulator += item.quantity * item.precio,0);
     }

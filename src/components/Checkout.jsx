@@ -1,6 +1,14 @@
-import { addDoc, collection, doc, getDocs, getFirestore, serverTimestamp, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
 export default function Checkout() {
@@ -15,11 +23,12 @@ export default function Checkout() {
   const orderCollection = collection(db, "orders");
 
   const productsCollection = collection(db, "productos");
-  
+
   useEffect(() => {
-    getDocs(productsCollection).then((res)=>{
-    setProductos(res.docs.map(doc=> ({id: doc.id, ...doc.data() })))})
-  },)
+    getDocs(productsCollection).then((res) => {
+      setProductos(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    });
+  });
 
   const { cart, getItemPrice, clearCart } = useContext(CartContext);
 
@@ -30,36 +39,36 @@ export default function Checkout() {
       total: getItemPrice(),
       date: serverTimestamp(),
     };
-    
-      addDoc(orderCollection, pedido).then(({ id }) => {
+
+    addDoc(orderCollection, pedido).then(({ id }) => {
       setOrderId(id);
       setEstado(true);
       clearCart();
 
-      cart.forEach(element => {
-        productos.forEach(product => {
+      cart.forEach((element) => {
+        productos.forEach((product) => {
           if (element.id === product.id) {
-            const stockUpdate = doc(db, "productos", product.id)
-            updateDoc(stockUpdate, {stock: product.stock - element.quantity})
+            const stockUpdate = doc(db, "productos", product.id);
+            updateDoc(stockUpdate, { stock: product.stock - element.quantity });
           }
         });
       });
-    }); 
+    });
   }
 
-  function setVariables(target, setter){
+  function setVariables(target, setter) {
     let valorDepurado = target.value;
     // eslint-disable-next-line default-case
-    switch(target.id){
-      case 'name':
-        valorDepurado = valorDepurado.replace(/[^a-z áéíóúÁÉÍÓÚ]/gi, '');
+    switch (target.id) {
+      case "name":
+        valorDepurado = valorDepurado.replace(/[^a-z áéíóúÁÉÍÓÚ]/gi, ""); //Validación básica para no permitir números ni carac. especiales
         break;
-      case 'telefono':
-        valorDepurado = valorDepurado.replace(/[^0-9]/gi, '');
+      case "telefono":
+        valorDepurado = valorDepurado.replace(/[^0-9]/gi, "");
         break;
     }
-    target.value = valorDepurado
-    setter(valorDepurado)
+    target.value = valorDepurado;
+    setter(valorDepurado);
   }
 
   const renderForm = () => {
@@ -67,58 +76,63 @@ export default function Checkout() {
       <div className="container mt-5 ">
         <div className="row">
           <div className="col col-lg-6 bg-light">
-          <form action="" onSubmit={(e) => {handleClick(); e.preventDefault();}}>
-            <p className="h5 mt-3">Completar Formulario de Contacto</p>
-            <div className="mb-3">
-              <input
-                onInput={(e) => setVariables(e.target,setName)}
-                type="text"
-                className="form-control"
-                id="name"
-                placeholder="Nombre"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                onInput={(e) => setVariables(e.target, setEmail)}
-                type="email"
-                className="form-control"
-                id="email"
-                placeholder="Email"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                onInput={(e) => setVariables(e.target, setCellphone)}
-                type="text"
-                className="form-control"
-                id="telefono"
-                placeholder="Teléfono"
-                maxLength={10}
-                required
-              />
-            </div>
-            <button
-              type="submit"
-              className="btn btn-danger mb-3"
+            <form
+              action=""
+              onSubmit={(e) => {
+                handleClick();
+                e.preventDefault();
+              }}
             >
-              Finalizar Pedido
-            </button>
-          </form>
+              <p className="h5 mt-3">Completá el Formulario de Contacto:</p>
+              <div className="mb-3">
+                <input
+                  onInput={(e) => setVariables(e.target, setName)}
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  placeholder="Nombre"
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  onInput={(e) => setVariables(e.target, setEmail)}
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  onInput={(e) => setVariables(e.target, setCellphone)}
+                  type="text"
+                  className="form-control"
+                  id="telefono"
+                  placeholder="Teléfono"
+                  maxLength={10}
+                  required
+                />
+              </div>
+              <button type="submit" className="btn btn-danger mb-3">
+                Finalizar Pedido
+              </button>
+            </form>
           </div>
           <div className="col offset-md-1 col-lg-5 bg-light">
-            <h5 className="mt-3">Detalle Pedido</h5>
+            <h5 className="mt-3">Detalle del Pedido:</h5>
             <ul className="list-group">
               {cart?.map((item, key) => (
                 <div className="" key={item.id}>
                   <li className="list-group-item">
-                    {item.nombre} - ${item.precio} - Cantidad: {item.quantity}
+                    Producto: {item.nombre} - Precio: ${item.precio} - Cantidad: {item.quantity}u.
                   </li>
                 </div>
               ))}
-              <li className="list-group-item bg-danger text-white fw-bolder">Total: ${getItemPrice()}</li>
+              <li className="list-group-item bg-danger text-white fw-bolder">
+                Total: ${getItemPrice()}
+              </li>
             </ul>
           </div>
         </div>
@@ -128,10 +142,12 @@ export default function Checkout() {
 
   return (
     <>
-      {cart.length == 0 && estado === false ? <Navigate to="/" /> : ''}
+      {cart.length == 0 && estado === false ? <Navigate to="/" /> : ""}
       {estado === true ? (
         <div className="alert alert-primary" role="alert">
-          Tu id de pedido es: <h4>{orderId}</h4>
+          <p className="h3">¡Felicidades tu compra ha sido aprobada!</p>
+          <p className="h2">Tu id de pedido es: <h4 className="text-danger">{orderId}</h4></p>
+          <p className="h5">En instantes nos pondremos en contacto con ud.</p>
         </div>
       ) : (
         renderForm()

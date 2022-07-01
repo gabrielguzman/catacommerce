@@ -13,7 +13,7 @@ export default function useItem(id) {
         setTimeout(() => {
           const itemFounded = products.find((product) => product.id == id);
           res(itemFounded);
-        },1000);
+        }, 1000);
       });
     };
 

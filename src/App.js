@@ -12,6 +12,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import ItemListContainer from './components/ItemListContainer';
 import Navbar from "./components/NavBar";
 import NotFound from "./components/NotFound";
+import OrderList from "./components/OrderList";
 import CartContext from "./context/CartContext";
 
 function App() {

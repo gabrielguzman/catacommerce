@@ -1,11 +1,7 @@
-import React from "react";
-import CartWidget from "./CartWidget";
 import { Link } from 'react-router-dom';
-import {CartContext} from '../context/CartContext';
-import { useContext } from "react";
+import CartWidget from "./CartWidget";
 
 const Navbar = ({cantidad}) => {
-  const {cart} = useContext(CartContext);
   return (
     <div className="container-fluid navbar-dark bg-dark">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -79,7 +75,8 @@ const Navbar = ({cantidad}) => {
                 </ul>
               </li>
                 <li className="nav-item">
-                    {cart.length> 0 ? <CartWidget cantidad = {cantidad}/> : '' }
+                    {/* {cart.length> 0 ? <CartWidget cantidad = {cantidad}/> : '' } <----Lo oculto para desafio, lo dejo visible para entrega final */ }
+                    <CartWidget cantidad = {cantidad}/>
                 </li>
             </ul>
           </div>
