@@ -8,8 +8,9 @@ export default function Cart() {
 
   const renderCarrito = () => {
     return (
-      <div className="container">
+      <div className="container ">
         <h4 className="mt-3">Carrito</h4>
+        <div className="table-responsive">
         <table className="table table-striped table-hover mt-5">
           <thead>
             <tr>
@@ -58,6 +59,8 @@ export default function Cart() {
             </tr>
           </tfoot>
         </table>
+        </div>
+       
         <div>
           <Link to={"/"} className="btn btn-secondary mt-3 mr-1">
             Seguir Comprando
