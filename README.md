@@ -2,13 +2,18 @@
 Se desarrolla un e-commerce como proyecto para coderhouse utilizando react.
 Mi idea es crearlo con productos de diferentes categorias para abarcar distintas necesidades.
 
-1. Se utilizó algunos dependencias extras como bootstrap para realizar el diseño, ya que me resulto una herramienta de gran ayuda para reducir los tiempos.
-2. Se utilizó fontawesome para renderizar iconos, por ejemplo el del carrito
+## Herramientas:
+1. Bootstrap ya que me facilito el diseño/maquetado de la app, reduciendo tiempos y permitiendo hacer responsive mi proyecto.
+2. Fontawesome me permitio renderizar iconos, por el ejemplo el del carrito.
+3. Firebase Database para el almacenamiento de los datos de mi proyecto.
+4. Firebase Hosting, para el despliegue (deploy) de la app en tan solo unos minutos. 
 
-###### Pasos a seguir para ejecutar la app:
+### Pasos a seguir para ejecutar la app de forma local:
 
-1. Clonar repositorio en un directorio local.
-2. Ejecutar npm-install desde la consola para instalar dependencias.
-3. Ejecutar npm-start para correr el proyecto de forma local.
+1. Clonar repositorio en un directorio.
+2. Desde la consola, ubicarme en el directorio donde clone el proyecto y ejecutar npm-install.
+3. Desde la consola, ubicarme en el directorio donde clone el proyecto y ejecutar npm-start para correr el proyecto.
 
-__Desarrollado por Gabriel Eduardo Guzmán__
+
+### Url hacia el proyecto: https://codercatacommerce.web.app/
+__Desarrollado por Gabriel Eduardo Guzmán -- Año:2022__
