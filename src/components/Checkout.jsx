@@ -8,7 +8,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
 export default function Checkout() {
@@ -21,7 +21,6 @@ export default function Checkout() {
 
   const db = getFirestore();
   const orderCollection = collection(db, "orders");
-
   const productsCollection = collection(db, "productos");
 
   useEffect(() => {
@@ -83,7 +82,7 @@ export default function Checkout() {
                 e.preventDefault();
               }}
             >
-              <p className="h5 mt-3">Completá el Formulario de Contacto:</p>
+              <p className="h5 mt-3">Por favor completá el formulario de contacto:</p>
               <div className="mb-3">
                 <input
                   onInput={(e) => setVariables(e.target, setName)}
@@ -146,8 +145,9 @@ export default function Checkout() {
       {estado === true ? (
         <div className="alert alert-primary" role="alert">
           <p className="h3">¡Felicidades tu compra ha sido aprobada!</p>
-          <p className="h2">Tu id de pedido es: <h4 className="text-danger">{orderId}</h4></p>
-          <p className="h5">En instantes nos pondremos en contacto con ud.</p>
+          <p className="h2">Tu id de pedido es: <b className="text-danger">{orderId}</b></p>
+          <p className="h5">En instantes nos pondremos en contacto con usted.</p>
+          <Link to={'/'} className="btn btn-primary">Ir a inicio</Link>
         </div>
       ) : (
         renderForm()

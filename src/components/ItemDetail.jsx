@@ -39,10 +39,13 @@ export default function ItemDetail({ product }) {
               {isInCart(product.id) ? (
                 <div>
                   <p className="fw-bolder">
-                    El producto se agregó en el carrito.
+                    El producto se agregó en el carrito exitosamente.
                   </p>
+                  <Link to={"/"} className="btn btn-primary">
+                    Seguir comprando
+                  </Link>
                   <Link to={"/cart"} className="btn btn-danger">
-                    Terminar mi compra
+                    Ir al carrito
                   </Link>
                 </div>
               ) : (

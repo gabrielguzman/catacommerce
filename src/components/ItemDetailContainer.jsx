@@ -20,8 +20,6 @@ export default function ItemDetailContainer() {
       if (res.exists()) {
         setItem({...res.data(), id: res.id })
         setIsLoading(false);
-      }else{
-        console.log('no se encontro el documento');
       }
     })
   }, [id])
